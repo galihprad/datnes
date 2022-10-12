@@ -1,8 +1,59 @@
-import Head from 'next/head'
-import Image from 'next/image'
-import styles from '../styles/Home.module.css'
+import Head from "next/head";
+import Image from "next/image";
+import pegawaiJSON from "../pegawai_12_10_2022.json";
+import styles from "../styles/Home.module.css";
 
 export default function Home() {
+  const selectPegawai = (data, jenis, unit, status, jenisKelamin) => {
+    return (
+      (!jenis || data["Jenis"] === jenis) &&
+      (!unit || data["Eselon 2"] === unit) &&
+      (!status || data["Status"] === status) &&
+      (!jenisKelamin || data["Jenis Kelamin"] === jenisKelamin)
+    );
+  };
+
+  const countPegawai = (dataAll, jenis, unit, status, jenisKelamin) => {
+    return dataAll.filter((i) =>
+      selectPegawai(i, jenis, unit, status, jenisKelamin)
+    ).length;
+  };
+
+  const rowPegawai = (index, units) => {
+    return (
+      <tr>
+        <td>{index}</td>
+        <td>{units}</td>
+        <td className="tableNum">
+          {countPegawai(pegawaiJSON, "TENDIK", units, "PNS", "Laki-laki") +
+            countPegawai(pegawaiJSON, "TENDIK", units, "CPNS", "Laki-laki")}
+        </td>
+        <td className="tableNum">
+          {countPegawai(pegawaiJSON, "TENDIK", units, "PNS", "Perempuan") +
+            countPegawai(pegawaiJSON, "TENDIK", units, "CPNS", "Perempuan")}
+        </td>
+        <td className="tableNum">
+          {countPegawai(pegawaiJSON, "TENDIK", units, "Kontrak", "Laki-laki")}
+        </td>
+        <td className="tableNum">
+          {countPegawai(pegawaiJSON, "TENDIK", units, "Kontrak", "Perempuan")}
+        </td>
+        <td className="tableNum">
+          {countPegawai(pegawaiJSON, "TENDIK", units, "BLU", "Laki-laki")}
+        </td>
+        <td className="tableNum">
+          {countPegawai(pegawaiJSON, "TENDIK", units, "BLU", "Perempuan")}
+        </td>
+
+        <td className="tableNum">
+          <span className="bolds">
+            {countPegawai(pegawaiJSON, "TENDIK", units, 0, 0)}
+          </span>
+        </td>
+      </tr>
+    );
+  };
+
   return (
     <div className={styles.container}>
       <Head>
@@ -12,58 +63,115 @@ export default function Home() {
       </Head>
 
       <main className={styles.main}>
-        <h1 className={styles.title}>
-          Welcome to <a href="https://nextjs.org">Next.js!</a>
-        </h1>
+        <table className="table1">
+          <tr>
+            <th rowSpan={2}>No</th>
+            <th rowSpan={2}>Unit Kerja</th>
+            <th colSpan={2}>PNS</th>
+            <th colSpan={2}>Kontrak</th>
+            <th colSpan={2}>BLU</th>
+            <th rowSpan={2}>Jumlah</th>
+          </tr>
+          <tr>
+            <th>L</th>
+            <th>P</th>
+            <th>L</th>
+            <th>P</th>
+            <th>L</th>
+            <th>P</th>
+          </tr>
 
-        <p className={styles.description}>
-          Get started by editing{' '}
-          <code className={styles.code}>pages/index.js</code>
-        </p>
-
-        <div className={styles.grid}>
-          <a href="https://nextjs.org/docs" className={styles.card}>
-            <h2>Documentation &rarr;</h2>
-            <p>Find in-depth information about Next.js features and API.</p>
-          </a>
-
-          <a href="https://nextjs.org/learn" className={styles.card}>
-            <h2>Learn &rarr;</h2>
-            <p>Learn about Next.js in an interactive course with quizzes!</p>
-          </a>
-
-          <a
-            href="https://github.com/vercel/next.js/tree/canary/examples"
-            className={styles.card}
-          >
-            <h2>Examples &rarr;</h2>
-            <p>Discover and deploy boilerplate example Next.js projects.</p>
-          </a>
-
-          <a
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            className={styles.card}
-          >
-            <h2>Deploy &rarr;</h2>
-            <p>
-              Instantly deploy your Next.js site to a public URL with Vercel.
-            </p>
-          </a>
-        </div>
+          {[
+            "FIP",
+            "FBS",
+            "FIS",
+            "FMIPA",
+            "FT",
+            "FIK",
+            "FE",
+            "FH",
+            "PASCASARJANA",
+            "LP2M",
+            "LP3",
+            "BAKK",
+            "BUHK",
+            "BPK",
+            "UPT PERPUSTAKAAN",
+            "UPT HUMAS",
+            "UPT TIK",
+            "UPT PENGEMBANGAN KONSERVASI",
+            "UPT KEARSIPAN",
+            "BPM",
+          ].map((i, index) => rowPegawai(index + 1, i))}
+          <tr>
+            <td rowSpan={2} colSpan={2}>
+              Jumlah
+            </td>
+            <td className="tableNum">
+              <span className="bolds">
+                {countPegawai(pegawaiJSON, "TENDIK", 0, "PNS", "Laki-laki") +
+                  countPegawai(pegawaiJSON, "TENDIK", 0, "CPNS", "Laki-laki")}
+              </span>
+            </td>
+            <td className="tableNum">
+              <span className="bolds">
+                {countPegawai(pegawaiJSON, "TENDIK", 0, "PNS", "Perempuan") +
+                  countPegawai(pegawaiJSON, "TENDIK", 0, "CPNS", "Perempuan")}
+              </span>
+            </td>
+            <td className="tableNum">
+              <span className="bolds">
+                {countPegawai(pegawaiJSON, "TENDIK", 0, "Kontrak", "Laki-laki")}
+              </span>
+            </td>
+            <td className="tableNum">
+              {" "}
+              <span className="bolds">
+                {countPegawai(pegawaiJSON, "TENDIK", 0, "Kontrak", "Perempuan")}
+              </span>
+            </td>
+            <td className="tableNum">
+              {" "}
+              <span className="bolds">
+                {countPegawai(pegawaiJSON, "TENDIK", 0, "BLU", "Laki-laki")}
+              </span>
+            </td>
+            <td className="tableNum">
+              {" "}
+              <span className="bolds">
+                {countPegawai(pegawaiJSON, "TENDIK", 0, "BLU", "Perempuan")}
+              </span>
+            </td>
+            <td className="tableNum" rowSpan={2}>
+              {" "}
+              <span className="bolds">
+                {countPegawai(pegawaiJSON, "TENDIK", 0, 0, 0)}
+              </span>
+            </td>
+          </tr>
+          <tr>
+            <td className="tableNum" colSpan={2}>
+              {" "}
+              <span className="bolds">
+                {countPegawai(pegawaiJSON, "TENDIK", 0, "PNS", 0) +
+                  countPegawai(pegawaiJSON, "TENDIK", 0, "CPNS", 0)}
+              </span>
+            </td>
+            <td className="tableNum" colSpan={2}>
+              {" "}
+              <span className="bolds">
+                {countPegawai(pegawaiJSON, "TENDIK", 0, "Kontrak", 0)}
+              </span>
+            </td>
+            <td className="tableNum" colSpan={2}>
+              {" "}
+              <span className="bolds">
+                {countPegawai(pegawaiJSON, "TENDIK", 0, "BLU", 0)}
+              </span>
+            </td>
+          </tr>
+        </table>
       </main>
-
-      <footer className={styles.footer}>
-        <a
-          href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Powered by{' '}
-          <span className={styles.logo}>
-            <Image src="/vercel.svg" alt="Vercel Logo" width={72} height={16} />
-          </span>
-        </a>
-      </footer>
     </div>
-  )
+  );
 }
