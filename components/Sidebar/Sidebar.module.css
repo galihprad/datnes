@@ -1,0 +1,13 @@
+.container {
+  height: 100vh;
+  width: 300px;
+  min-width: 200px;
+  position: sticky;
+  top: 0;
+  left: 0;
+  background-color: lightgray;
+}
+
+.menuItem {
+  margin-bottom: 20px;
+}
