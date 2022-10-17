@@ -180,11 +180,10 @@ export default function Home() {
         <meta name="description" content="data unnes" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-
-      <main className={styles.main}>
-        <h2>Jumlah Tenaga Kependidikan PNS</h2>
-        <h2>Menurut Golongan</h2>
-        {showTable && (
+      {showTable && (
+        <main className={styles.main}>
+          <h2>Jumlah Tenaga Kependidikan</h2>
+          <h2>Menurut Pendidikan</h2>
           <table className="table1">
             <tr>
               <th rowSpan={3}>No</th>
@@ -479,8 +478,8 @@ export default function Home() {
               </td>
             </tr>
           </table>
-        )}
-      </main>
+        </main>
+      )}
     </div>
   );
 }

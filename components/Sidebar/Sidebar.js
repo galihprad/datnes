@@ -6,9 +6,9 @@ export default function Sidebar() {
   return (
     <div className={st.container}>
       <Link href="/">
-        <div className={st.menuItem}>Home</div>
+        <h3 className={st.menuItem}>Home</h3>
       </Link>
-      <div className={st.menuItem}>Tendik</div>
+      <h3 className={st.menuItem}>Tendik</h3>
       <Link href="/tendik/unitkerja">
         <div className={st.menuItem}>Menurut Unit Kerja</div>
       </Link>
@@ -21,7 +21,7 @@ export default function Sidebar() {
       <Link href="/tendik/pendidikan">
         <div className={st.menuItem}>Menurut Pendidikan</div>
       </Link>
-      <div className={st.menuItem}>Dosen</div>
+      <h3 className={st.menuItem}>Dosen</h3>
       <Link href="/dosen/unitkerja">
         <div className={st.menuItem}>Menurut Unit Kerja</div>
       </Link>

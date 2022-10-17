@@ -87,10 +87,10 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <main className={styles.main}>
-        <h2>Jumlah Tenaga Kependidikan Pegawai Tetap non PNS</h2>
-        <h2>Menurut Golongan</h2>
-        {showTable && (
+      {showTable && (
+        <main className={styles.main}>
+          <h2>Jumlah Tenaga Kependidikan Pegawai Tetap non PNS</h2>
+          <h2>Menurut Golongan</h2>
           <table className="table1">
             <tr>
               <th rowSpan={2}>No</th>
@@ -195,8 +195,8 @@ export default function Home() {
               })}
             </tr>
           </table>
-        )}
-      </main>
+        </main>
+      )}
     </div>
   );
 }
