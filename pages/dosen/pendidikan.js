@@ -62,13 +62,13 @@ export default function Home() {
       <tr>
         <td>{index}</td>
         <td>{units}</td>
-        {["SD", "SMP", "SMA", "Diploma", "S1", "S2", "S3"].map((gol) => {
+        {["S2", "S3"].map((gol) => {
           return (
             <>
               <td className="tableNum">
                 {countPegawai(
                   dataJSON,
-                  "TENDIK",
+                  "DOSEN",
                   units,
                   "PNS",
                   "Laki-laki",
@@ -77,7 +77,7 @@ export default function Home() {
                 ) +
                   countPegawai(
                     dataJSON,
-                    "TENDIK",
+                    "DOSEN",
                     units,
                     "CPNS",
                     "Laki-laki",
@@ -88,7 +88,7 @@ export default function Home() {
               <td className="tableNum">
                 {countPegawai(
                   dataJSON,
-                  "TENDIK",
+                  "DOSEN",
                   units,
                   "PNS",
                   "Perempuan",
@@ -97,7 +97,7 @@ export default function Home() {
                 ) +
                   countPegawai(
                     dataJSON,
-                    "TENDIK",
+                    "DOSEN",
                     units,
                     "CPNS",
                     "Perempuan",
@@ -108,13 +108,13 @@ export default function Home() {
             </>
           );
         })}
-        {["SD", "SMP", "SMA", "Diploma", "S1", "S2", "S3"].map((gol) => {
+        {["S2", "S3"].map((gol) => {
           return (
             <>
               <td className="tableNum">
                 {countPegawai(
                   dataJSON,
-                  "TENDIK",
+                  "DOSEN",
                   units,
                   "Kontrak",
                   "Laki-laki",
@@ -125,7 +125,7 @@ export default function Home() {
               <td className="tableNum">
                 {countPegawai(
                   dataJSON,
-                  "TENDIK",
+                  "DOSEN",
                   units,
                   "Kontrak",
                   "Perempuan",
@@ -136,13 +136,13 @@ export default function Home() {
             </>
           );
         })}{" "}
-        {["SD", "SMP", "SMA", "Diploma", "S1", "S2", "S3"].map((gol) => {
+        {["S2", "S3"].map((gol) => {
           return (
             <>
               <td className="tableNum">
                 {countPegawai(
                   dataJSON,
-                  "TENDIK",
+                  "DOSEN",
                   units,
                   "BLU",
                   "Laki-laki",
@@ -153,7 +153,7 @@ export default function Home() {
               <td className="tableNum">
                 {countPegawai(
                   dataJSON,
-                  "TENDIK",
+                  "DOSEN",
                   units,
                   "BLU",
                   "Perempuan",
@@ -166,7 +166,7 @@ export default function Home() {
         })}
         <td className="tableNum">
           <span className="bolds">
-            {countPegawai(dataJSON, "TENDIK", units, 0, 0, 0)}
+            {countPegawai(dataJSON, "DOSEN", units, 0, 0, 0)}
           </span>
         </td>
       </tr>
@@ -182,37 +182,24 @@ export default function Home() {
       </Head>
       {showTable && (
         <main className={styles.main}>
-          <h2>Jumlah Tenaga Kependidikan</h2>
+          <h2>Jumlah Dosen</h2>
           <h2>Menurut Pendidikan</h2>
           <table className="table1">
             <tr>
               <th rowSpan={3}>No</th>
               <th rowSpan={3}>Unit Kerja</th>
-              <th colSpan={14}>PNS</th>
-              <th colSpan={14}>Kontrak</th>
-              <th colSpan={14}>BLU</th>
+              <th colSpan={4}>PNS</th>
+              <th colSpan={4}>Kontrak</th>
+              <th colSpan={4}>BLU</th>
               <th rowSpan={3}>Jumlah</th>
             </tr>
             <tr>
-              <th colSpan={2}>SD</th>
-              <th colSpan={2}>SMP</th>
-              <th colSpan={2}>SMA</th>
-              <th colSpan={2}>Diploma</th>
-              <th colSpan={2}>S1</th>
               <th colSpan={2}>S2</th>
               <th colSpan={2}>S3</th>
-              <th colSpan={2}>SD</th>
-              <th colSpan={2}>SMP</th>
-              <th colSpan={2}>SMA</th>
-              <th colSpan={2}>Diploma</th>
-              <th colSpan={2}>S1</th>
+
               <th colSpan={2}>S2</th>
               <th colSpan={2}>S3</th>
-              <th colSpan={2}>SD</th>
-              <th colSpan={2}>SMP</th>
-              <th colSpan={2}>SMA</th>
-              <th colSpan={2}>Diploma</th>
-              <th colSpan={2}>S1</th>
+
               <th colSpan={2}>S2</th>
               <th colSpan={2}>S3</th>
             </tr>
@@ -224,29 +211,6 @@ export default function Home() {
               <th>L</th>
               <th>P</th>
               <th>L</th>
-              <th>P</th> <th>L</th>
-              <th>P</th> <th>L</th>
-              <th>P</th> <th>L</th>
-              <th>P</th>
-              <th>L</th>
-              <th>P</th>
-              <th>L</th>
-              <th>P</th>
-              <th>L</th>
-              <th>P</th>
-              <th>L</th>
-              <th>P</th> <th>L</th>
-              <th>P</th> <th>L</th>
-              <th>P</th> <th>L</th>
-              <th>P</th>
-              <th>L</th>
-              <th>P</th>
-              <th>L</th>
-              <th>P</th>
-              <th>L</th>
-              <th>P</th>
-              <th>L</th>
-              <th>P</th> <th>L</th>
               <th>P</th> <th>L</th>
               <th>P</th> <th>L</th>
               <th>P</th>
@@ -261,33 +225,20 @@ export default function Home() {
               "FIK",
               "FE",
               "FH",
-              "PASCASARJANA",
-              "LP2M",
-              "LP3",
-              "BAKK",
-              "BUHK",
-              "BPK",
-              "UPT PERPUSTAKAAN",
-              "UPT HUMAS",
-              "UPT TIK",
-              "UPT PENGEMBANGAN KONSERVASI",
-              "UPT KEARSIPAN",
-              "BPM",
               "UPP SEMARANG",
-              "BADAN PENGEMBANGAN BISNIS",
             ].map((i, index) => rowPegawai(index + 1, i))}
             <tr>
               <td rowSpan={3} colSpan={2}>
                 <span className="bolds">Jumlah</span>
               </td>
-              {["SD", "SMP", "SMA", "Diploma", "S1", "S2", "S3"].map((gol) => {
+              {["S2", "S3"].map((gol) => {
                 return (
                   <>
                     <td className="tableNum">
                       <span className="bolds">
                         {countPegawai(
                           dataJSON,
-                          "TENDIK",
+                          "DOSEN",
                           0,
                           "PNS",
                           "Laki-laki",
@@ -296,7 +247,7 @@ export default function Home() {
                         ) +
                           countPegawai(
                             dataJSON,
-                            "TENDIK",
+                            "DOSEN",
                             0,
                             "CPNS",
                             "Laki-laki",
@@ -309,7 +260,7 @@ export default function Home() {
                       <span className="bolds">
                         {countPegawai(
                           dataJSON,
-                          "TENDIK",
+                          "DOSEN",
                           0,
                           "PNS",
                           "Perempuan",
@@ -318,7 +269,7 @@ export default function Home() {
                         ) +
                           countPegawai(
                             dataJSON,
-                            "TENDIK",
+                            "DOSEN",
                             0,
                             "CPNS",
                             "Perempuan",
@@ -330,14 +281,14 @@ export default function Home() {
                   </>
                 );
               })}
-              {["SD", "SMP", "SMA", "Diploma", "S1", "S2", "S3"].map((gol) => {
+              {["S2", "S3"].map((gol) => {
                 return (
                   <>
                     <td className="tableNum">
                       <span className="bolds">
                         {countPegawai(
                           dataJSON,
-                          "TENDIK",
+                          "DOSEN",
                           0,
                           "Kontrak",
                           "Laki-laki",
@@ -350,7 +301,7 @@ export default function Home() {
                       <span className="bolds">
                         {countPegawai(
                           dataJSON,
-                          "TENDIK",
+                          "DOSEN",
                           0,
                           "Kontrak",
                           "Perempuan",
@@ -362,14 +313,14 @@ export default function Home() {
                   </>
                 );
               })}{" "}
-              {["SD", "SMP", "SMA", "Diploma", "S1", "S2", "S3"].map((gol) => {
+              {["S2", "S3"].map((gol) => {
                 return (
                   <>
                     <td className="tableNum">
                       <span className="bolds">
                         {countPegawai(
                           dataJSON,
-                          "TENDIK",
+                          "DOSEN",
                           0,
                           "BLU",
                           "Laki-laki",
@@ -382,7 +333,7 @@ export default function Home() {
                       <span className="bolds">
                         {countPegawai(
                           dataJSON,
-                          "TENDIK",
+                          "DOSEN",
                           0,
                           "BLU",
                           "Perempuan",
@@ -396,39 +347,31 @@ export default function Home() {
               })}
               <td rowSpan={3} className="tableNum">
                 <span className="bolds">
-                  {countPegawai(dataJSON, "TENDIK", 0, 0, 0, 0, 0)}
+                  {countPegawai(dataJSON, "DOSEN", 0, 0, 0, 0, 0)}
                 </span>
               </td>
             </tr>
             <tr>
-              {["SD", "SMP", "SMA", "Diploma", "S1", "S2", "S3"].map((gol) => {
+              {["S2", "S3"].map((gol) => {
                 return (
                   <>
                     <td colSpan={2} className="tableNum">
                       <span className="bolds">
-                        {countPegawai(dataJSON, "TENDIK", 0, "PNS", 0, 0, gol) +
-                          countPegawai(
-                            dataJSON,
-                            "TENDIK",
-                            0,
-                            "CPNS",
-                            0,
-                            0,
-                            gol
-                          )}
+                        {countPegawai(dataJSON, "DOSEN", 0, "PNS", 0, 0, gol) +
+                          countPegawai(dataJSON, "DOSEN", 0, "CPNS", 0, 0, gol)}
                       </span>
                     </td>
                   </>
                 );
               })}
-              {["SD", "SMP", "SMA", "Diploma", "S1", "S2", "S3"].map((gols) => {
+              {["S2", "S3"].map((gols) => {
                 return (
                   <>
                     <td colSpan={2} className="tableNum">
                       <span className="bolds">
                         {countPegawai(
                           dataJSON,
-                          "TENDIK",
+                          "DOSEN",
                           0,
                           "Kontrak",
                           0,
@@ -440,13 +383,13 @@ export default function Home() {
                   </>
                 );
               })}{" "}
-              {["SD", "SMP", "SMA", "Diploma", "S1", "S2", "S3"].map((gol) => {
+              {["S2", "S3"].map((gol) => {
                 return (
                   <>
                     <td colSpan={2} className="tableNum">
                       {" "}
                       <span className="bolds">
-                        {countPegawai(dataJSON, "TENDIK", 0, "BLU", 0, 0, gol)}
+                        {countPegawai(dataJSON, "DOSEN", 0, "BLU", 0, 0, gol)}
                       </span>
                     </td>
                   </>
@@ -454,26 +397,26 @@ export default function Home() {
               })}
               {/* <td rowSpan={3} className="tableNum">
                 <span className="bolds">
-                  {countPegawai(dataJSON, "TENDIK", 0, "PNS", 0, 0, 0) +
-                    countPegawai(dataJSON, "TENDIK", 0, "CPNS", 0, 0, 0)}
+                  {countPegawai(dataJSON, "DOSEN", 0, "PNS", 0, 0, 0) +
+                    countPegawai(dataJSON, "DOSEN", 0, "CPNS", 0, 0, 0)}
                 </span>
               </td> */}
             </tr>
             <tr>
-              <td colSpan={14} className="tableNum">
+              <td colSpan={4} className="tableNum">
                 <span className="bolds">
-                  {countPegawai(dataJSON, "TENDIK", 0, "PNS", 0, 0, 0) +
-                    countPegawai(dataJSON, "TENDIK", 0, "CPNS", 0, 0, 0)}
+                  {countPegawai(dataJSON, "DOSEN", 0, "PNS", 0, 0, 0) +
+                    countPegawai(dataJSON, "DOSEN", 0, "CPNS", 0, 0, 0)}
                 </span>
               </td>
-              <td colSpan={14} className="tableNum">
+              <td colSpan={4} className="tableNum">
                 <span className="bolds">
-                  {countPegawai(dataJSON, "TENDIK", 0, "Kontrak", 0, 0, 0)}
+                  {countPegawai(dataJSON, "DOSEN", 0, "Kontrak", 0, 0, 0)}
                 </span>
               </td>{" "}
-              <td colSpan={14} className="tableNum">
+              <td colSpan={4} className="tableNum">
                 <span className="bolds">
-                  {countPegawai(dataJSON, "TENDIK", 0, "BLU", 0, 0, 0)}
+                  {countPegawai(dataJSON, "DOSEN", 0, "BLU", 0, 0, 0)}
                 </span>
               </td>
             </tr>

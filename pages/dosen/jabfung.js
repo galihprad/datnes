@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+
 import Head from "next/head";
 import Image from "next/image";
 import pegawaiJSON from "../../pegawai_12_10_2022.json";
@@ -8,20 +9,29 @@ export default function Home() {
   const [dataJSON, setDataJSON] = useState([]);
   const [showTable, setShowTable] = useState(false);
 
-  const selectPegawai = (data, jenis, unit, status, jenisKelamin, golongan) => {
+  useEffect(() => {
+    setDataJSON(pegawaiJSON);
+    setShowTable(true);
+  }, []);
+
+  const selectPegawai = (
+    data,
+    jenis,
+    unit,
+    status,
+    jenisKelamin,
+    golongan,
+    jabfung
+  ) => {
     return (
       (!jenis || data["Jenis"] === jenis) &&
       (!unit || data["Eselon 2"] === unit) &&
       (!status || data["Status"] === status) &&
       (!jenisKelamin || data["Jenis Kelamin"] === jenisKelamin) &&
-      (!golongan || data["Pangkat"].split("-")[1].split(" ")[1] === golongan)
+      (!golongan || data["Pangkat"].split("-")[1].split(" ")[1] === golongan) &&
+      (!jabfung || data["Jabatan Fungsional"] === jabfung)
     );
   };
-
-  useEffect(() => {
-    setDataJSON(pegawaiJSON);
-    setShowTable(true);
-  }, []);
 
   const countPegawai = (
     dataAll,
@@ -29,11 +39,12 @@ export default function Home() {
     unit,
     status,
     jenisKelamin,
-    golongan
+    golongan,
+    jabfung
   ) => {
     return (
       dataAll.filter((i) =>
-        selectPegawai(i, jenis, unit, status, jenisKelamin, golongan)
+        selectPegawai(i, jenis, unit, status, jenisKelamin, golongan, jabfung)
       ).length || ""
     );
   };
@@ -43,28 +54,20 @@ export default function Home() {
       <tr>
         <td>{index}</td>
         <td>{units}</td>
-        {["3b", "3a", "2d", "2c", "2b", "2a", "1d"].map((gol) => {
+        {[
+          "Tenaga Pengajar",
+          "Asisten Ahli",
+          "Lektor",
+          "Lektor Kepala",
+          "Profesor",
+        ].map((gol) => {
           return (
             <>
               <td className="tableNum">
-                {countPegawai(
-                  dataJSON,
-                  "TENDIK",
-                  units,
-                  "BLU",
-                  "Laki-laki",
-                  gol
-                )}
+                {countPegawai(dataJSON, "DOSEN", units, 0, "Laki-laki", 0, gol)}
               </td>
               <td className="tableNum">
-                {countPegawai(
-                  dataJSON,
-                  "TENDIK",
-                  units,
-                  "BLU",
-                  "Perempuan",
-                  gol
-                )}
+                {countPegawai(dataJSON, "DOSEN", units, 0, "Perempuan", 0, gol)}
               </td>
             </>
           );
@@ -72,7 +75,7 @@ export default function Home() {
 
         <td className="tableNum">
           <span className="bolds">
-            {countPegawai(dataJSON, "TENDIK", units, "BLU", 0, 0)}
+            {countPegawai(dataJSON, "DOSEN", units, 0, 0, 0, 0)}
           </span>
         </td>
       </tr>
@@ -86,22 +89,19 @@ export default function Home() {
         <meta name="description" content="data unnes" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-
       {showTable && (
         <main className={styles.main}>
-          <h2>Jumlah Tenaga Kependidikan Pegawai Tetap non PNS</h2>
-          <h2>Menurut Golongan</h2>
+          <h2>Jumlah Dosen</h2>
+          <h2>Menurut Jabatan Fungsional</h2>
           <table className="table1">
             <tr>
               <th rowSpan={2}>No</th>
               <th rowSpan={2}>Unit Kerja</th>
-              <th colSpan={2}>3b</th>
-              <th colSpan={2}>3a</th>
-              <th colSpan={2}>2d</th>
-              <th colSpan={2}>2c</th>
-              <th colSpan={2}>2b</th>
-              <th colSpan={2}>2a</th>
-              <th colSpan={2}>1d</th>
+              <th colSpan={2}>Tenaga Pengajar</th>
+              <th colSpan={2}>Asisten Ahli</th>
+              <th colSpan={2}>Lektor</th>
+              <th colSpan={2}>Lektor Kepala</th>
+              <th colSpan={2}>Profesor</th>
               <th rowSpan={2}>Jumlah</th>
             </tr>
             <tr>
@@ -113,10 +113,9 @@ export default function Home() {
               <th>P</th>
               <th>L</th>
               <th>P</th> <th>L</th>
-              <th>P</th> <th>L</th>
-              <th>P</th> <th>L</th>
               <th>P</th>
             </tr>
+
             {[
               "FIP",
               "FBS",
@@ -126,36 +125,30 @@ export default function Home() {
               "FIK",
               "FE",
               "FH",
-              "PASCASARJANA",
-              "LP2M",
-              "LP3",
-              "BAKK",
-              "BUHK",
-              "BPK",
-              "UPT PERPUSTAKAAN",
-              "UPT HUMAS",
-              "UPT TIK",
-              "UPT PENGEMBANGAN KONSERVASI",
-              "UPT KEARSIPAN",
-              "BPM",
               "UPP SEMARANG",
-              "BADAN PENGEMBANGAN BISNIS",
             ].map((i, index) => rowPegawai(index + 1, i))}
             <tr>
               <td rowSpan={2} colSpan={2}>
                 <span className="bolds">Jumlah</span>
               </td>
-              {["3b", "3a", "2d", "2c", "2b", "2a", "1d"].map((gol) => {
+              {[
+                "Tenaga Pengajar",
+                "Asisten Ahli",
+                "Lektor",
+                "Lektor Kepala",
+                "Profesor",
+              ].map((gol) => {
                 return (
                   <>
                     <td className="tableNum">
                       <span className="bolds">
                         {countPegawai(
                           dataJSON,
-                          "TENDIK",
+                          "DOSEN",
                           0,
-                          "BLU",
+                          0,
                           "Laki-laki",
+                          0,
                           gol
                         )}
                       </span>
@@ -164,10 +157,11 @@ export default function Home() {
                       <span className="bolds">
                         {countPegawai(
                           dataJSON,
-                          "TENDIK",
+                          "DOSEN",
                           0,
-                          "BLU",
+                          0,
                           "Perempuan",
+                          0,
                           gol
                         )}
                       </span>
@@ -177,17 +171,23 @@ export default function Home() {
               })}
               <td rowSpan={2} className="tableNum">
                 <span className="bolds">
-                  {countPegawai(dataJSON, "TENDIK", 0, "BLU", 0, 0)}
+                  {countPegawai(dataJSON, "DOSEN", 0, 0, 0, 0, 0)}
                 </span>
               </td>
             </tr>
             <tr>
-              {["3b", "3a", "2d", "2c", "2b", "2a", "1d"].map((gol) => {
+              {[
+                "Tenaga Pengajar",
+                "Asisten Ahli",
+                "Lektor",
+                "Lektor Kepala",
+                "Profesor",
+              ].map((gol) => {
                 return (
                   <>
                     <td colSpan={2} className="tableNum">
                       <span className="bolds">
-                        {countPegawai(dataJSON, "TENDIK", 0, "BLU", 0, gol)}
+                        {countPegawai(dataJSON, "DOSEN", 0, 0, 0, 0, gol)}{" "}
                       </span>
                     </td>
                   </>

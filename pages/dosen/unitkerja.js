@@ -36,29 +36,29 @@ export default function Home() {
         <td>{index}</td>
         <td>{units}</td>
         <td className="tableNum">
-          {countPegawai(dataJSON, "TENDIK", units, "PNS", "Laki-laki") +
-            countPegawai(dataJSON, "TENDIK", units, "CPNS", "Laki-laki")}
+          {countPegawai(dataJSON, "DOSEN", units, "PNS", "Laki-laki") +
+            countPegawai(dataJSON, "DOSEN", units, "CPNS", "Laki-laki")}
         </td>
         <td className="tableNum">
-          {countPegawai(dataJSON, "TENDIK", units, "PNS", "Perempuan") +
-            countPegawai(dataJSON, "TENDIK", units, "CPNS", "Perempuan")}
+          {countPegawai(dataJSON, "DOSEN", units, "PNS", "Perempuan") +
+            countPegawai(dataJSON, "DOSEN", units, "CPNS", "Perempuan")}
         </td>
         <td className="tableNum">
-          {countPegawai(dataJSON, "TENDIK", units, "Kontrak", "Laki-laki")}
+          {countPegawai(dataJSON, "DOSEN", units, "Kontrak", "Laki-laki")}
         </td>
         <td className="tableNum">
-          {countPegawai(dataJSON, "TENDIK", units, "Kontrak", "Perempuan")}
+          {countPegawai(dataJSON, "DOSEN", units, "Kontrak", "Perempuan")}
         </td>
         <td className="tableNum">
-          {countPegawai(dataJSON, "TENDIK", units, "BLU", "Laki-laki")}
+          {countPegawai(dataJSON, "DOSEN", units, "BLU", "Laki-laki")}
         </td>
         <td className="tableNum">
-          {countPegawai(dataJSON, "TENDIK", units, "BLU", "Perempuan")}
+          {countPegawai(dataJSON, "DOSEN", units, "BLU", "Perempuan")}
         </td>
 
         <td className="tableNum">
           <span className="bolds">
-            {countPegawai(dataJSON, "TENDIK", units, 0, 0)}
+            {countPegawai(dataJSON, "DOSEN", units, 0, 0)}
           </span>
         </td>
       </tr>
@@ -75,7 +75,7 @@ export default function Home() {
 
       {showTable && (
         <main className={styles.main}>
-          <h2>Jumlah Tenaga Kependidikan</h2>
+          <h2>Jumlah Dosen</h2>
           <h2>Menurut Unit Kerja</h2>
           <table className="table1">
             <tr>
@@ -104,20 +104,7 @@ export default function Home() {
               "FIK",
               "FE",
               "FH",
-              "PASCASARJANA",
-              "LP2M",
-              "LP3",
-              "BAKK",
-              "BUHK",
-              "BPK",
-              "UPT PERPUSTAKAAN",
-              "UPT HUMAS",
-              "UPT TIK",
-              "UPT PENGEMBANGAN KONSERVASI",
-              "UPT KEARSIPAN",
-              "BPM",
               "UPP SEMARANG",
-              "BADAN PENGEMBANGAN BISNIS",
             ].map((i, index) => rowPegawai(index + 1, i))}
             <tr>
               <td rowSpan={2} colSpan={2}>
@@ -125,43 +112,43 @@ export default function Home() {
               </td>
               <td className="tableNum">
                 <span className="bolds">
-                  {countPegawai(dataJSON, "TENDIK", 0, "PNS", "Laki-laki") +
-                    countPegawai(dataJSON, "TENDIK", 0, "CPNS", "Laki-laki")}
+                  {countPegawai(dataJSON, "DOSEN", 0, "PNS", "Laki-laki") +
+                    countPegawai(dataJSON, "DOSEN", 0, "CPNS", "Laki-laki")}
                 </span>
               </td>
               <td className="tableNum">
                 <span className="bolds">
-                  {countPegawai(dataJSON, "TENDIK", 0, "PNS", "Perempuan") +
-                    countPegawai(dataJSON, "TENDIK", 0, "CPNS", "Perempuan")}
+                  {countPegawai(dataJSON, "DOSEN", 0, "PNS", "Perempuan") +
+                    countPegawai(dataJSON, "DOSEN", 0, "CPNS", "Perempuan")}
                 </span>
               </td>
               <td className="tableNum">
                 <span className="bolds">
-                  {countPegawai(dataJSON, "TENDIK", 0, "Kontrak", "Laki-laki")}
-                </span>
-              </td>
-              <td className="tableNum">
-                {" "}
-                <span className="bolds">
-                  {countPegawai(dataJSON, "TENDIK", 0, "Kontrak", "Perempuan")}
+                  {countPegawai(dataJSON, "DOSEN", 0, "Kontrak", "Laki-laki")}
                 </span>
               </td>
               <td className="tableNum">
                 {" "}
                 <span className="bolds">
-                  {countPegawai(dataJSON, "TENDIK", 0, "BLU", "Laki-laki")}
+                  {countPegawai(dataJSON, "DOSEN", 0, "Kontrak", "Perempuan")}
                 </span>
               </td>
               <td className="tableNum">
                 {" "}
                 <span className="bolds">
-                  {countPegawai(dataJSON, "TENDIK", 0, "BLU", "Perempuan")}
+                  {countPegawai(dataJSON, "DOSEN", 0, "BLU", "Laki-laki")}
+                </span>
+              </td>
+              <td className="tableNum">
+                {" "}
+                <span className="bolds">
+                  {countPegawai(dataJSON, "DOSEN", 0, "BLU", "Perempuan")}
                 </span>
               </td>
               <td className="tableNum" rowSpan={2}>
                 {" "}
                 <span className="bolds">
-                  {countPegawai(dataJSON, "TENDIK", 0, 0, 0)}
+                  {countPegawai(dataJSON, "DOSEN", 0, 0, 0)}
                 </span>
               </td>
             </tr>
@@ -169,20 +156,20 @@ export default function Home() {
               <td className="tableNum" colSpan={2}>
                 {" "}
                 <span className="bolds">
-                  {countPegawai(dataJSON, "TENDIK", 0, "PNS", 0) +
-                    countPegawai(dataJSON, "TENDIK", 0, "CPNS", 0)}
+                  {countPegawai(dataJSON, "DOSEN", 0, "PNS", 0) +
+                    countPegawai(dataJSON, "DOSEN", 0, "CPNS", 0)}
                 </span>
               </td>
               <td className="tableNum" colSpan={2}>
                 {" "}
                 <span className="bolds">
-                  {countPegawai(dataJSON, "TENDIK", 0, "Kontrak", 0)}
+                  {countPegawai(dataJSON, "DOSEN", 0, "Kontrak", 0)}
                 </span>
               </td>
               <td className="tableNum" colSpan={2}>
                 {" "}
                 <span className="bolds">
-                  {countPegawai(dataJSON, "TENDIK", 0, "BLU", 0)}
+                  {countPegawai(dataJSON, "DOSEN", 0, "BLU", 0)}
                 </span>
               </td>
             </tr>
