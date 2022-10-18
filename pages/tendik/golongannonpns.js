@@ -3,10 +3,13 @@ import Head from "next/head";
 import Image from "next/image";
 import pegawaiJSON from "../../pegawai_12_10_2022.json";
 import styles from "../../styles/Home.module.css";
+import { useAppContext } from "utils/global-context";
 
 export default function Home() {
   const [dataJSON, setDataJSON] = useState([]);
   const [showTable, setShowTable] = useState(false);
+
+  const { styleTable } = useAppContext();
 
   const selectPegawai = (data, jenis, unit, status, jenisKelamin, golongan) => {
     return (
@@ -88,10 +91,10 @@ export default function Home() {
       </Head>
 
       {showTable && (
-        <main className={styles.main}>
+        <main className={styleTable ? styles.main : styles.main2}>
           <h2>Jumlah Tenaga Kependidikan Pegawai Tetap non PNS</h2>
           <h2>Menurut Golongan</h2>
-          <table className="table1">
+          <table className={styleTable ? "table1" : "table2"}>
             <tr>
               <th rowSpan={2}>No</th>
               <th rowSpan={2}>Unit Kerja</th>
