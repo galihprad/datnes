@@ -5,8 +5,9 @@ import pegawaiJSON2 from "../../pa_31_10_2022.json";
 import pegawaiOutJSON from "../../pna_31_10_2022.json";
 import { useAppContext } from "utils/global-context";
 import { toPascalCase } from "helper/toPascalCase";
+import st from "styles/PerubahanPage.module.css";
 
-export default function Okt22() {
+export default function PerubahanPegawai() {
   const [eduList, setEduList] = useState([]);
   const [pangkatList, setPangkatList] = useState([]);
   const [unitList, setUnitList] = useState([]);
@@ -77,20 +78,22 @@ export default function Okt22() {
   }, []);
 
   return (
-    <div>
+    <div className={st.container}>
+      <h2>Perubahan Pegawai</h2>
+      <h2>selama Bulan Oktober 2022</h2>
+
       {showTable && (
-        <>
+        <div>
           {" "}
           {(inList.length || "") && (
             <div>
-              <h4>Pegawai Masuk</h4>
+              <h4 className={st.titleList}>Pegawai Masuk</h4>
               <table className={styleTable ? "table1" : "table2"}>
                 <tr>
                   <th>NO</th>
                   <th>Nama</th>
                   <th>NIP</th>
                   <th>Status</th>
-
                   <th>Unit</th>
                   {/* <th>Sedudah</th> */}
                 </tr>
@@ -108,10 +111,40 @@ export default function Okt22() {
                 ))}
               </table>
             </div>
+          )}{" "}
+          {(outList.length || "") && (
+            <div>
+              <h4 className={st.titleList}>
+                Pegawai Meninggal/Pensiun/Mengundurkan Diri
+              </h4>
+              <table className={styleTable ? "table1" : "table2"}>
+                <tr>
+                  <th>NO</th>
+                  <th>Nama</th>
+                  <th>NIP</th>
+                  <th>Status</th>
+
+                  <th>Keterangan</th>
+                  {/* <th>Sedudah</th> */}
+                </tr>
+                {outList.map((i, index) => (
+                  <tr key={index}>
+                    <td>{index + 1}</td>
+                    <td>{toPascalCase(i["Nama"])}</td>
+                    <td>{i["NIP"].replace("`", "")}</td>
+                    <td>
+                      {toPascalCase(i["Jenis"])} {i["Status"]}
+                    </td>
+                    <td>{i["Status Kerja"]}</td>
+                    {/* <td>{i[1]["Pangkat"]}</td> */}
+                  </tr>
+                ))}
+              </table>
+            </div>
           )}
           {(eduList.length || "") && (
             <div>
-              <h4>Perubahan Pendidikan</h4>
+              <h4 className={st.titleList}>Perubahan Pendidikan</h4>
               <table className={styleTable ? "table1" : "table2"}>
                 <tr>
                   <th>NO</th>
@@ -138,14 +171,13 @@ export default function Okt22() {
           )}
           {(pangkatList.length || "") && (
             <div>
-              <h4>Perubahan Pangkat</h4>
+              <h4 className={st.titleList}>Perubahan Pangkat</h4>
               <table className={styleTable ? "table1" : "table2"}>
                 <tr>
                   <th>NO</th>
                   <th>Nama</th>
                   <th>NIP</th>
                   <th>Status</th>
-
                   <th>Sebelum</th>
                   <th>Sedudah</th>
                 </tr>
@@ -166,7 +198,7 @@ export default function Okt22() {
           )}
           {(jabfungList.length || "") && (
             <div>
-              <h4>Perubahan Jabatan Fungsional</h4>
+              <h4 className={st.titleList}>Perubahan Jabatan Fungsional</h4>
               <table className={styleTable ? "table1" : "table2"}>
                 <tr>
                   <th>NO</th>
@@ -194,7 +226,7 @@ export default function Okt22() {
           )}
           {(jabstrukList.length || "") && (
             <div>
-              <h4>Perubahan Jabatan Struktural</h4>
+              <h4 className={st.titleList}>Perubahan Jabatan Struktural</h4>
               <table className={styleTable ? "table1" : "table2"}>
                 <tr>
                   <th>NO</th>
@@ -219,7 +251,7 @@ export default function Okt22() {
           )}
           {(unitList.length || "") && (
             <div>
-              <h4>Perubahan Unit</h4>
+              <h4 className={st.titleList}>Perubahan Unit</h4>
               <table className={styleTable ? "table1" : "table2"}>
                 <tr>
                   <th>NO</th>
@@ -245,35 +277,7 @@ export default function Okt22() {
               </table>
             </div>
           )}
-          {(outList.length || "") && (
-            <div>
-              <h4>Pegawai Meninggal/Pensiun/Mengundurkan Diri</h4>
-              <table className={styleTable ? "table1" : "table2"}>
-                <tr>
-                  <th>NO</th>
-                  <th>Nama</th>
-                  <th>NIP</th>
-                  <th>Status</th>
-
-                  <th>Keterangan</th>
-                  {/* <th>Sedudah</th> */}
-                </tr>
-                {outList.map((i, index) => (
-                  <tr key={index}>
-                    <td>{index + 1}</td>
-                    <td>{toPascalCase(i["Nama"])}</td>
-                    <td>{i["NIP"].replace("`", "")}</td>
-                    <td>
-                      {toPascalCase(i["Jenis"])} {i["Status"]}
-                    </td>
-                    <td>{i["Status Kerja"]}</td>
-                    {/* <td>{i[1]["Pangkat"]}</td> */}
-                  </tr>
-                ))}
-              </table>
-            </div>
-          )}
-        </>
+        </div>
       )}
     </div>
   );
