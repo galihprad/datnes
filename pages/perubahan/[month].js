@@ -205,15 +205,15 @@ export default function Okt22() {
                   <th>Sebelum</th>
                   <th>Sedudah</th>
                 </tr>
-                {/* {jabstrukList.map((i, index) => (
-                <tr key={index}>
-                  <td>{index + 1}</td>
-                  <td>{i[0]["Nama"]}</td>
-                  <td>{i[0]["NIP"]}</td>
-                  <td>{i[0]["Jabatan Struktural"]}</td>
-                  <td>{i[1]["Jabatan Struktural"]}</td>
-                </tr>
-              ))} */}
+                {jabstrukList.map((i, index) => (
+                  <tr key={index}>
+                    <td>{index + 1}</td>
+                    <td>{i[0]["Nama"]}</td>
+                    <td>{i[0]["NIP"]}</td>
+                    <td>{i[0]["Jabatan Struktural"]}</td>
+                    <td>{i[1]["Jabatan Struktural"]}</td>
+                  </tr>
+                ))}
               </table>
             </div>
           )}
@@ -247,7 +247,7 @@ export default function Okt22() {
           )}
           {(outList.length || "") && (
             <div>
-              <h4>Pegawai Meninggal/Pensiun</h4>
+              <h4>Pegawai Meninggal/Pensiun/Mengundurkan Diri</h4>
               <table className={styleTable ? "table1" : "table2"}>
                 <tr>
                   <th>NO</th>

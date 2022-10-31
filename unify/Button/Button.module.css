@@ -1,0 +1,9 @@
+.container {
+  border: 2px solid #7090b0;
+  display: flex;
+  font-weight: 600;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-family: "Mulish";
+}

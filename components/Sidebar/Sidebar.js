@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import st from "./Sidebar.module.css";
 import Link from "next/link";
 import { useAppContext } from "utils/global-context";
+import Button from "unify/Button/Button";
 
 export default function Sidebar() {
   const [showSidebar, setShowSidebar] = useState(true);
@@ -12,8 +13,11 @@ export default function Sidebar() {
     <>
       {showSidebar && (
         <div className={st.container}>
-          <button
-            onClick={() => {
+          <Button
+            filled
+            small
+            colors="#00838f"
+            handleClick={() => {
               setShowSidebar(false);
               setStyleTable(false);
               setTimeout(() => {
@@ -26,11 +30,11 @@ export default function Sidebar() {
             }}
           >
             PRINT
-          </button>
+          </Button>
           <Link href="/">
-            <h3 className={st.menuItem}>Home</h3>
+            <h3 className={st.menuItemHead}>Home</h3>
           </Link>
-          <h3 className={st.menuItem}>Tendik</h3>
+          <h3 className={st.menuItemHead}>Tendik</h3>
           <Link href="/tendik/unitkerja">
             <div className={st.menuItem}>Menurut Unit Kerja</div>
           </Link>
@@ -43,7 +47,7 @@ export default function Sidebar() {
           <Link href="/tendik/pendidikan">
             <div className={st.menuItem}>Menurut Pendidikan</div>
           </Link>
-          <h3 className={st.menuItem}>Dosen</h3>
+          <h3 className={st.menuItemHead}>Dosen</h3>
           <Link href="/dosen/unitkerja">
             <div className={st.menuItem}>Menurut Unit Kerja</div>
           </Link>
@@ -56,7 +60,7 @@ export default function Sidebar() {
           <Link href="/dosen/jabfung">
             <div className={st.menuItem}>Jabatan Fungsional</div>
           </Link>
-          <h3 className={st.menuItem}>Perubahan Data</h3>
+          <h3 className={st.menuItemHead}>Perubahan Data</h3>
           <Link href="/perubahan/okt22">
             <div className={st.menuItem}>Oktober 2022</div>
           </Link>
