@@ -86,7 +86,7 @@ export default function PerubahanPegawai() {
     <div className={st.container}>
       <h2>Perubahan Pegawai</h2>
       <h2>
-        selama Bulan {monthparam && getMonthName(monthparam[0])}{" "}
+        selama Bulan {monthparam && getMonthName(monthparam[0])} 20
         {monthparam && monthparam[1]}
       </h2>
       {showTable && (

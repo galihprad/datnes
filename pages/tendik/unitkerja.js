@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 
 import Head from "next/head";
 import Image from "next/image";
-import pegawaiJSON from "../../pegawai_12_10_2022.json";
+import pegawaiJSON from "../../pa_1_11_2022.json";
 import styles from "../../styles/Home.module.css";
 import { useAppContext } from "utils/global-context";
 

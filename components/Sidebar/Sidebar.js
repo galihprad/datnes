@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import st from "./Sidebar.module.css";
+import { useRouter } from "next/router";
+
 import Link from "next/link";
 import { useAppContext } from "utils/global-context";
 import Button from "unify/Button/Button";
@@ -8,6 +10,12 @@ export default function Sidebar() {
   const [showSidebar, setShowSidebar] = useState(true);
 
   const { setStyleTable } = useAppContext();
+
+  const router = useRouter();
+
+  const activePath = (path) => {
+    return router.pathname === path ? st.menuItemActive : st.menuItem;
+  };
 
   return (
     <>
@@ -36,33 +44,49 @@ export default function Sidebar() {
           </Link>
           <h3 className={st.menuItemHead}>Tendik</h3>
           <Link href="/tendik/unitkerja">
-            <div className={st.menuItem}>Menurut Unit Kerja</div>
+            <div className={activePath("/tendik/unitkerja")}>
+              Menurut Unit Kerja
+            </div>
           </Link>
           <Link href="/tendik/golonganpns">
-            <div className={st.menuItem}>Menurut Golongan (PNS)</div>
+            <div className={activePath("/tendik/golonganpns")}>
+              Menurut Golongan (PNS)
+            </div>
           </Link>
           <Link href="/tendik/golongannonpns">
-            <div className={st.menuItem}>Menurut Golongan (BLU)</div>
+            <div className={activePath("/tendik/golongannonpns")}>
+              Menurut Golongan (BLU)
+            </div>
           </Link>
           <Link href="/tendik/pendidikan">
-            <div className={st.menuItem}>Menurut Pendidikan</div>
+            <div className={activePath("/tendik/pendidikan")}>
+              Menurut Pendidikan
+            </div>
           </Link>
           <h3 className={st.menuItemHead}>Dosen</h3>
           <Link href="/dosen/unitkerja">
-            <div className={st.menuItem}>Menurut Unit Kerja</div>
+            <div className={activePath("/dosen/unitkerja")}>
+              Menurut Unit Kerja
+            </div>
           </Link>
           <Link href="/dosen/golonganpns">
-            <div className={st.menuItem}>Menurut Golongan (PNS)</div>
+            <div className={activePath("/dosen/golonganpns")}>
+              Menurut Golongan (PNS)
+            </div>
           </Link>
           <Link href="/dosen/pendidikan">
-            <div className={st.menuItem}>Menurut Pendidikan</div>
+            <div className={activePath("/dosen/pendidikan")}>
+              Menurut Pendidikan
+            </div>
           </Link>
           <Link href="/dosen/jabfung">
-            <div className={st.menuItem}>Jabatan Fungsional</div>
+            <div className={activePath("/dosen/jabfung")}>
+              Jabatan Fungsional
+            </div>
           </Link>
           <h3 className={st.menuItemHead}>Perubahan Data</h3>
-          <Link href="/perubahan/okt22">
-            <div className={st.menuItem}>Oktober 2022</div>
+          <Link href="/perubahan/10/2022">
+            <div className={activePath("/perubahan/10/2022")}>Oktober 2022</div>
           </Link>
         </div>
       )}

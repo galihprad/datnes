@@ -12,9 +12,23 @@
 }
 
 .menuItem {
-  margin-bottom: 10px;
   cursor: pointer;
+  height: 2rem;
+  display: flex;
+  align-items: center;
   margin-left: 15px;
+  border-radius: 0.5rem;
+}
+
+.menuItemActive {
+  background-color: #00838f;
+  color: white;
+  cursor: pointer;
+  height: 2rem;
+  display: flex;
+  align-items: center;
+  border-radius: 0.5rem;
+  padding-left: 15px;
 }
 
 .menuItemHead {
